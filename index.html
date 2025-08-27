@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asgard Agency</title>
+    <!-- Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for social media icons and WhatsApp icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- Animate.css for WOW.js animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        /* General body font, prefers Inter for English and Cairo for Arabic */
+        body {
+            font-family: 'Inter', 'Cairo', sans-serif;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Video background container and styling */
+        .hero-bg {
+            background-color: #1a202c;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            /* Set hero section to full viewport height */
+        }
+
+        .hero-bg video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            filter: brightness(0.5);
+            /* Ensure the video covers the full container without stretching */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay to ensure text is readable */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 32, 44, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            background: -webkit-linear-gradient(45deg, #FBBF24, #60A5FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Active navigation link styling */
+        .nav-link.active {
+            color: #FBBF24;
+        }
+
+        /* Page animation for smooth transitions */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hide scrollbar for horizontal scrollers */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Active filter button styling for portfolio */
+        .filter-btn.active {
+            background-color: #FBBF24;
+            color: #1a202c;
+            border-color: #FBBF24;
+        }
+
+        /* Mobile menu styling with a slide-out transition from right to left */
+        #mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 64%;
+            max-width: 300px;
+            background: #1a202c;
+            padding-top: 4rem;
+            z-index: 60;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #mobile-nav-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="nav-link "><img src="images/logo.png" alt="" style="width: 140px;"></a>
+            <!-- Desktop navigation links -->
+            <div class="hidden md:flex items-center gap-6" id="nav-links">
+                <a href="#home" data-translate-key="nav_home"
+                    class="nav-link hover:text-amber-400 transition-colors active">Home</a>
+                <a href="#services" data-translate-key="nav_services"
+                    class="nav-link hover:text-amber-400 transition-colors">Services</a>
+                <a href="#portfolio" data-translate-key="nav_portfolio"
+                    class="nav-link hover:text-amber-400 transition-colors">Portfolio</a>
+                <a href="#team" data-translate-key="nav_team"
+                    class="nav-link hover:text-amber-400 transition-colors">Team</a>
+                <a href="#consultations" data-translate-key="nav_consultations"
+                    class="nav-link hover:text-amber-400 transition-colors">Consultations</a>
+                <a href="#blog" data-translate-key="nav_blog"
+                    class="nav-link hover:text-amber-400 transition-colors">Blog</a>
+                <a href="#about" data-translate-key="nav_about"
+                    class="nav-link hover:text-amber-400 transition-colors">About Us</a>
+                <a href="#request-service" data-translate-key="nav_contact"
+                    class="nav-link-btn bg-amber-400 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-300 transition-colors text-sm">
+                    Contact Us
+                </a>
+                <button id="lang-switcher"
+                    class="text-gray-300 hover:text-amber-400 font-semibold flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9" />
+                    </svg>
+                    <span data-translate-key="lang_ar">العربية</span>
+                </button>
+            </div>
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-nav-menu" class="md:hidden px-6 py-8 flex flex-col gap-6">
+        <a href="#home" data-translate-key="nav_home"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">Home</a>
+        <a href="#services" data-translate-key="nav_services"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">Services</a>
+        <a href="#portfolio" data-translate-key="nav_portfolio"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">Portfolio</a>
+        <a href="#team" data-translate-key="nav_team"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">Team</a>
+        <a href="#consultations" data-translate-key="nav_consultations"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">Consultations</a>
+        <a href="#blog" data-translate-key="nav_blog"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">Blog</a>
+        <a href="#about" data-translate-key="nav_about"
+            class="nav-link hover:text-amber-400 transition-colors text-xl">About Us</a>
+        <a href="#request-service" data-translate-key="nav_contact"
+            class="nav-link-btn bg-amber-400 text-gray-900 font-bold py-2 px-5 rounded-full hover:bg-amber-300 transition-colors mt-4">
+            Contact Us
+        </a>
+        <button id="lang-switcher-mobile"
+            class="text-gray-300 hover:text-amber-400 font-semibold flex items-center gap-2 mt-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9V3m0 18a9 9 0 009-9m-9 9a9 9 0 00-9-9" />
+            </svg>
+            <span data-translate-key="lang_ar">العربية</span>
+        </button>
+    </div>
+
+    <main>
+        <!-- Home Page -->
+        <div id="page-home" class="page active">
+            <header class="hero-bg">
+                <!-- Video background -->
+                <video id="hero-video" autoplay loop muted playsinline
+                    poster="https://placehold.co/1920x1080/1a202c/ffffff?text=Video+Loading">
+                    <source src="images/hero-video.mp4" type="video/mp4"
+                        onerror="this.src='https://placehold.co/1920x1080/1a202c/ffffff?text=Video+Not+Found';" />
+                </video>
+                <div class="container mx-auto px-6 text-center hero-content py-20 md:py-32">
+                    <h2 data-translate-key="home_hero_title"
+                        class="text-4xl md:text-6xl font-bold mb-4 leading-tight wow animate__fadeInUp">Crafting
+                        Strategies that Elevate Your Brand</h2>
+                    <p data-translate-key="home_hero_subtitle"
+                        class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 wow animate__fadeInUp"
+                        data-wow-delay="0.2s">At Asgard, we don't just run marketing campaigns; we build lasting legends
+                        for your brand.</p>
+                    <a href="#request-service" data-translate-key="home_hero_cta"
+                        class="nav-link-btn bg-amber-400 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-300 transition-transform transform hover:scale-105 wow animate__fadeInUp"
+                        data-wow-delay="0.4s">Request Your Service Now</a>
+                </div>
+            </header>
+
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h3 data-translate-key="home_about_title" class="text-4xl font-bold mb-4 section-title">A
+                            Gateway to Our World</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center max-w-5xl mx-auto">
+                        <div class="wow animate__fadeInUp" data-wow-delay="0.2s">
+                            <h4 data-translate-key="home_about_who" class="text-2xl font-bold mb-3 text-amber-400">Who
+                                We Are</h4>
+                            <p data-translate-key="home_about_who_desc" class="text-gray-300">We are a team of creatives
+                                and strategists united by one passion: achieving exceptional results for our clients.
+                            </p>
+                        </div>
+                        <div class="wow animate__fadeInUp" data-wow-delay="0.4s">
+                            <h4 data-translate-key="home_about_goal" class="text-2xl font-bold mb-3 text-amber-400">Our
+                                Goal</h4>
+                            <p data-translate-key="home_about_goal_desc" class="text-gray-300">To be the indispensable
+                                partner for every brand aspiring to reach the top, through innovative and impactful
+                                marketing solutions.</p>
+                        </div>
+                        <div class="wow animate__fadeInUp" data-wow-delay="0.6s">
+                            <h4 data-translate-key="home_about_vision" class="text-2xl font-bold mb-3 text-amber-400">
+                                Our Vision</h4>
+                            <p data-translate-key="home_about_vision_desc" class="text-gray-300">Integrating creativity
+                                with data to create inspiring success stories and redefine the standards of excellence
+                                in marketing.</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12 wow animate__fadeInUp" data-wow-delay="0.8s">
+                        <a href="#about" data-translate-key="home_about_cta"
+                            class="nav-link-btn text-amber-400 border border-amber-400 font-bold py-3 px-8 rounded-full hover:bg-amber-400 hover:text-gray-900 transition-colors">Learn
+                            More About Us</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-gray-800 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h3 data-translate-key="home_portfolio_title" class="text-4xl font-bold mb-4 section-title">Our
+                            Latest Works</h3>
+                        <p data-translate-key="home_portfolio_subtitle" class="text-gray-400 max-w-2xl mx-auto">Discover
+                            how we translate data into tangible successes through our in-depth analyses.</p>
+                    </div>
+                    <!-- Owl Carousel for portfolio -->
+                    <div id="home-portfolio-scroller" class="owl-carousel owl-theme"></div>
+                    <div class="text-center mt-8">
+                        <a href="#portfolio" data-translate-key="home_portfolio_cta"
+                            class="nav-link-btn text-amber-400 border border-amber-400 font-bold py-3 px-8 rounded-full hover:bg-amber-400 hover:text-gray-900 transition-colors">Browse
+                            All Works</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h3 data-translate-key="home_team_title" class="text-4xl font-bold mb-4 section-title">Meet Our
+                            Team</h3>
+                        <p data-translate-key="home_team_subtitle" class="text-gray-400 max-w-2xl mx-auto">The creative
+                            minds that will lead your brand to the summit.</p>
+                    </div>
+                    <!-- Owl Carousel for team -->
+                    <div id="home-team-scroller" class="owl-carousel owl-theme"></div>
+                    <div class="text-center mt-12">
+                        <a href="#team" data-translate-key="home_team_cta"
+                            class="nav-link-btn text-amber-400 border border-amber-400 font-bold py-3 px-8 rounded-full hover:bg-amber-400 hover:text-gray-900 transition-colors">See
+                            All Experts</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-20 bg-gray-800 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h3 data-translate-key="home_blog_title" class="text-4xl font-bold mb-4 section-title">From Our
+                            Blog</h3>
+                        <p data-translate-key="home_blog_subtitle" class="text-gray-400 max-w-2xl mx-auto">The latest
+                            articles and strategies in the world of digital marketing.</p>
+                    </div>
+                    <!-- Owl Carousel for blog -->
+                    <div id="home-blog-scroller" class="owl-carousel owl-theme"></div>
+                    <div class="text-center mt-8">
+                        <a href="#blog" data-translate-key="home_blog_cta"
+                            class="nav-link-btn text-amber-400 border border-amber-400 font-bold py-3 px-8 rounded-full hover:bg-amber-400 hover:text-gray-900 transition-colors">Read
+                            More Articles</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Services Page -->
+        <div id="page-services" class="page">
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <h3 data-translate-key="services_title" class="text-4xl font-bold text-center mb-2 section-title">
+                        Our Strength in Our Services</h3>
+                    <p data-translate-key="services_subtitle" class="text-center text-gray-400 mb-12">We offer
+                        integrated solutions and specialized services to drive your business growth at every stage.</p>
+                    <!-- Changed to a responsive grid for 2 columns on medium screens and larger -->
+                    <div id="services-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Services will be dynamically injected here -->
+                    </div>
+                </div>
+            </section>
+            <div class="cta-section"></div>
+        </div>
+
+        <!-- Request Service Page -->
+        <div id="page-request-service" class="page">
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <h3 data-translate-key="req_title" class="text-4xl font-bold text-center mb-2 section-title">Request
+                        Integrated Marketing Service</h3>
+                    <p data-translate-key="req_subtitle" class="text-center text-gray-400 mb-12">Your first step towards
+                        growth. Fill out the form, and one of our experts will contact you shortly.</p>
+                    <form id="service-request-form" class="max-w-2xl mx-auto bg-gray-800 p-8 rounded-lg">
+                        <h4 data-translate-key="req_form_basic" class="text-xl font-bold mb-6 text-white">Basic
+                            Information (Required)</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" data-translate-key="req_form_name"
+                                    class="block text-gray-400 mb-2">Full Name</label>
+                                <input type="text" id="name" name="name"
+                                    class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="business-name" data-translate-key="req_form_bizname"
+                                    class="block text-gray-400 mb-2">Business Name</label>
+                                <input type="text" id="business-name" name="business-name"
+                                    class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div>
+                                <label for="phone" data-translate-key="req_form_phone"
+                                    class="block text-gray-400 mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone"
+                                    class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="whatsapp" data-translate-key="req_form_whatsapp"
+                                    class="block text-gray-400 mb-2">WhatsApp Number</label>
+                                <input type="tel" id="whatsapp" name="whatsapp"
+                                    class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400"
+                                    required>
+                            </div>
+                        </div>
+
+                        <h4 data-translate-key="req_form_optional" class="text-xl font-bold mb-6 text-white">Additional
+                            Information (Optional)</h4>
+                        <div class="space-y-6">
+                            <div>
+                                <label for="website" data-translate-key="req_form_website"
+                                    class="block text-gray-400 mb-2">Website</label>
+                                <input type="url" id="website" name="website"
+                                    class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400"
+                                    placeholder="https://example.com">
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="facebook" data-translate-key="req_form_facebook"
+                                        class="block text-gray-400 mb-2">Facebook Link</label>
+                                    <input type="url" id="facebook" name="facebook"
+                                        class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400">
+                                </div>
+                                <div>
+                                    <label for="instagram" data-translate-key="req_form_instagram"
+                                        class="block text-gray-400 mb-2">Instagram Link</label>
+                                    <input type="url" id="instagram" name="instagram"
+                                        class="w-full p-3 rounded-md bg-gray-700 border border-gray-600 focus:outline-none focus:border-amber-400">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row-reverse items-center justify-center gap-4 mt-10">
+                            <button type="submit" data-translate-key="req_form_submit"
+                                class="w-full sm:w-auto bg-amber-400 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-300 transition-transform transform hover:scale-105">
+                                Request Contact
+                            </button>
+                            <a href="https://wa.me/1234567890" target="_blank"
+                                class="w-full sm:w-auto flex items-center justify-center gap-2 bg-green-500 text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition-transform transform hover:scale-105">
+                                <i class="fab fa-whatsapp"></i>
+                                <span data-translate-key="req_form_whatsapp_btn">Contact via WhatsApp</span>
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <!-- Request Consultation Page -->
+        <div id="page-request-consultation" class="page">
+            <!-- Content will be dynamically generated by JS -->
+        </div>
+
+        <!-- Portfolio Page -->
+        <div id="page-portfolio" class="page">
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <h3 data-translate-key="portfolio_title" class="text-4xl font-bold text-center mb-2 section-title">
+                        Our Portfolio</h3>
+                    <p data-translate-key="portfolio_subtitle" class="text-center text-gray-400 mb-8">See how we turn
+                        challenges into opportunities and opportunities into growth.</p>
+                    <div id="portfolio-filters" class="flex flex-wrap justify-center gap-3 mb-12"></div>
+                    <div id="portfolio-container" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+                </div>
+            </section>
+            <div class="cta-section"></div>
+        </div>
+
+        <!-- Team Page -->
+        <div id="page-team" class="page">
+            <div id="team-grid-view">
+                <section class="py-20 wow animate__fadeInUp">
+                    <div class="container mx-auto px-6">
+                        <h3 data-translate-key="team_title" class="text-4xl font-bold text-center mb-2 section-title">
+                            The Creative Minds Behind Our Success</h3>
+                        <p data-translate-key="team_subtitle" class="text-center text-gray-400 mb-12">Meet the
+                            organizational structure of the expert team that will turn your goals into reality.</p>
+                        <!-- Added flex justify-center to the container to center cards -->
+                        <div id="team-departments-container" class="space-y-16 flex flex-col items-center">
+                            <!-- Team departments will be injected here -->
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div id="team-profile-view" class="hidden"></div>
+            <div class="cta-section"></div>
+        </div>
+
+        <!-- Consultations Page -->
+        <div id="page-consultations" class="page">
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <h3 data-translate-key="consultations_title"
+                        class="text-4xl font-bold text-center mb-2 section-title">Book a Consultation with Our Experts
+                    </h3>
+                    <p data-translate-key="consultations_subtitle" class="text-center text-gray-400 mb-12">Get strategic
+                        insights tailored for your business directly from thought leaders in the marketing field.</p>
+                    <!-- Added flex justify-center to the container to center cards -->
+                    <div id="consultants-container"
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+                        <!-- Consultants will be dynamically injected here -->
+                    </div>
+                </div>
+            </section>
+            <div class="cta-section"></div>
+        </div>
+
+        <!-- Blog Page -->
+        <div id="page-blog" class="page">
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6">
+                    <h3 data-translate-key="blog_title" class="text-4xl font-bold text-center mb-2 section-title">Asgard
+                        Blog</h3>
+                    <p data-translate-key="blog_subtitle" class="text-center text-gray-400 mb-12">The latest insights
+                        and strategies in the world of digital marketing.</p>
+                    <div id="blog-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                </div>
+            </section>
+            <div class="cta-section"></div>
+        </div>
+
+        <!-- About Us Page -->
+        <div id="page-about" class="page">
+            <section class="py-20 wow animate__fadeInUp">
+                <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 wow animate__fadeInLeft" data-wow-delay="0.2s"><img
+                            src="images/4.png" alt="Asgard Team"
+                            class="rounded-lg shadow-2xl"></div>
+                    <div class="md:w-1/2 text-center md:text-left wow animate__fadeInRight" data-wow-delay="0.4s">
+                        <h3 data-translate-key="about_title" class="text-4xl font-bold mb-4 section-title">About Us</h3>
+                        <p data-translate-key="about_desc" class="text-gray-300 leading-relaxed">We are a team of
+                            creatives and strategic thinkers united by one passion: achieving exceptional results.</p>
+                    </div>
+                </div>
+            </section>
+            <div class="cta-section"></div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8 wow animate__fadeInUp">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <a href="#home" class="nav-link "><img src="images/logo.png" alt="" style="width: 140px;"></a>
+                    <p data-translate-key="footer_desc" class="text-gray-400">An innovative marketing agency that builds
+                        legends for ambitious brands.</p>
+                </div>
+                <div>
+                    <h4 data-translate-key="footer_links" class="font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" data-translate-key="nav_home"
+                                class="nav-link text-gray-400 hover:text-amber-400">Home</a></li>
+                        <li><a href="#services" data-translate-key="nav_services"
+                                class="nav-link text-gray-400 hover:text-amber-400">Services</a></li>
+                        <li><a href="#portfolio" data-translate-key="nav_portfolio"
+                                class="nav-link text-gray-400 hover:text-amber-400">Portfolio</a></li>
+                        <li><a href="#blog" data-translate-key="nav_blog"
+                                class="nav-link text-gray-400 hover:text-amber-400">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-translate-key="footer_contact" class="font-bold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="mailto:info@asgard.com" class="hover:text-amber-400">info@asgard.com</a></li>
+                        <li><a href="tel:+123456789" class="hover:text-amber-400">+1 234 567 89</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 data-translate-key="footer_social" class="font-bold text-white mb-4">Follow Us</h4>
+                    <div class="flex gap-4">
+                        <a href="https://facebook.com" target="_blank" class="text-gray-400 hover:text-amber-400"><i
+                                class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="text-gray-400 hover:text-amber-400"><i
+                                class="fab fa-instagram fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">
+                <p data-translate-key="footer_rights">&copy; 2025 Asgard Agency. All rights reserved. Made With ♥ By Asgard</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 transition-opacity duration-300">
+        <div
+            class="bg-gray-800 rounded-lg p-8 text-center max-w-sm mx-auto transform scale-95 transition-transform duration-300">
+            <div class="text-green-400 mb-4">
+                <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h3 data-translate-key="modal_success_title" class="text-2xl font-bold text-white mb-2">Request Received!
+            </h3>
+            <p data-translate-key="modal_success_desc" class="text-gray-400 mb-6">Thank you. Our team will contact you
+                within 24 hours.</p>
+            <button id="close-modal-btn" data-translate-key="modal_success_btn"
+                class="bg-amber-400 text-gray-900 font-bold py-2 px-6 rounded-full hover:bg-amber-300">Okay</button>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Icon -->
+    <a href="https://wa.me/1234567890" target="_blank"
+        class="fixed bottom-6 left-6 z-50 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
+        <i class="fab fa-whatsapp fa-2x"></i>
+    </a>
+
+    <!-- jQuery and Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- WOW.js for scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- DATA & TRANSLATIONS ---
+            let currentLanguage = 'en';
+
+            const translations = {
+                // English Translations
+                en: {
+                    nav_home: "Home", nav_services: "Services", nav_portfolio: "Portfolio", nav_team: "Team", nav_consultations: "Consultations", nav_blog: "Blog", nav_about: "About Us", nav_contact: "Contact Us", lang_ar: "العربية",
+                    home_hero_title: "Crafting Strategies that Elevate Your Brand", home_hero_subtitle: "At Asgard, we don't just run marketing campaigns; we build lasting legends for your brand.", home_hero_cta: "Request Your Service Now",
+                    home_about_title: "A Gateway to Our World", home_about_who: "Who We Are", home_about_who_desc: "We are a team of creatives and strategists united by one passion: achieving exceptional results for our clients.", home_about_goal: "Our Goal", home_about_goal_desc: "To be the indispensable partner for every brand aspiring to reach the top, through innovative and impactful marketing solutions.", home_about_vision: "Our Vision", home_about_vision_desc: "Integrating creativity with data to create inspiring success stories and redefine the standards of excellence in marketing.", home_about_cta: "Learn More About Us",
+                    home_portfolio_title: "Our Latest Works", home_portfolio_subtitle: "Discover how we translate data into tangible successes through our in-depth analyses.", home_portfolio_cta: "Browse All Works",
+                    home_team_title: "Meet Our Team", home_team_subtitle: "The creative minds that will lead your brand to the summit.", home_team_cta: "See All Experts",
+                    home_blog_title: "From Our Blog", home_blog_subtitle: "The latest articles and strategies in the world of digital marketing.", home_blog_cta: "Read More Articles",
+                    services_title: "Our Strength in Our Services", services_subtitle: "We offer integrated solutions and specialized services to drive your business growth at every stage.",
+                    req_title: "Request Integrated Marketing Service", req_subtitle: "Your first step towards growth. Fill out the form, and one of our experts will contact you shortly.",
+                    req_form_basic: "Basic Information (Required)", req_form_name: "Full Name", req_form_bizname: "Business Name", req_form_phone: "Phone Number", req_form_whatsapp: "WhatsApp Number",
+                    req_form_optional: "Additional Information (Optional)", req_form_website: "Website", req_form_facebook: "Facebook Link", req_form_instagram: "Instagram Link", req_form_submit: "Request Contact", req_form_whatsapp_btn: "Contact via WhatsApp",
+                    portfolio_title: "Our Portfolio", portfolio_subtitle: "See how we turn challenges into opportunities and opportunities into growth.",
+                    team_title: "The Creative Minds Behind Our Success", team_subtitle: "Meet the organizational structure of the expert team that will turn your goals into reality.",
+                    consultations_title: "Book a Consultation with Our Experts", consultations_subtitle: "Get strategic insights tailored for your business directly from thought leaders in the marketing field.",
+                    blog_title: "Asgard Blog", blog_subtitle: "The latest insights and strategies in the world of digital marketing.",
+                    about_title: "About Us", about_desc: "We are a team of creatives and strategists united by one passion: achieving exceptional results.",
+                    footer_desc: "An innovative marketing agency that builds legends for ambitious brands.", footer_links: "Quick Links", footer_contact: "Contact Us", footer_social: "Follow Us", footer_rights: "© 2025 Asgard Agency. All rights reserved. Made With ♥ By ASGARD",
+                    modal_success_title: "Request Received!", modal_success_desc: "Thank you. Our team will contact you within 24 hours.", modal_success_btn: "Okay",
+                    cta_title: "Ready to Start Your Project?", cta_subtitle: "Let us help you achieve your goals. Contact us today for a free consultation.", cta_btn: "Request Your Service Now",
+                    portfolio_filter_all: "All", portfolio_team_contrib: "Contributors", portfolio_team_view_profile: "View Profile",
+                    team_profile_works_by: "Works by", team_profile_view_in_portfolio: "View in Portfolio", team_profile_no_works: "No published works at the moment.", team_profile_back: "← Back to All Team", team_profile_department: "Department",
+                    portfolio_no_works: "No works to display in this section currently.",
+                    consultant_completed: "Consultations Completed", consultant_view_profile: "View Profile & Services",
+                    consultation_request_title: "Request a Consultation with", consultation_packages: "Consultation Packages", consultation_benefit: "How will this benefit your business?", consultation_cta: "Request Consultation",
+                    consultation_single: "Single Session", consultation_package: "4-Session Package", consultation_hour: "1 Hour", consultation_4hours: "4 Hours",
+                },
+                // Arabic Translations
+                ar: {
+                    nav_home: "الرئيسية", nav_services: "خدماتنا", nav_portfolio: "سابقة الأعمال", nav_team: "الفريق", nav_consultations: "الاستشارات", nav_blog: "المدونة", nav_about: "من نحن", nav_contact: "تواصل معنا", lang_en: "English",
+                    home_hero_title: "نصنع الاستراتيجيات التي ترتقي بعلامتك التجارية", home_hero_subtitle: "في Asgard، نحن لا ندير حملات تسويقية فحسب، بل نبني أساطير لعلامتك التجارية تدوم طويلاً.", home_hero_cta: "اطلب خدمتك الآن",
+                    home_about_title: "بوابة إلى عالمنا", home_about_who: "من نحن؟", home_about_who_desc: "نحن فريق من المبدعين والاستراتيجيين الذين يوحدهم شغف واحد: تحقيق نتائج استثنائية لعملائنا.", home_about_goal: "هدفنا", home_about_goal_desc: "أن نكون الشريك الذي لا غنى عنه لكل علامة تجارية تطمح للقمة، من خلال حلول تسويقية مبتكرة ومؤثرة.", home_about_vision: "رؤيتنا", home_about_vision_desc: "دمج الإبداع مع البيانات لنصنع قصص نجاح ملهمة ونعيد تعريف معايير التميز في عالم التسويق.", home_about_cta: "اعرف المزيد عنا",
+                    home_portfolio_title: "أحدث أعمالنا", home_portfolio_subtitle: "اكتشف كيف نترجم البيانات إلى نجاحات ملموسة من خلال تحليلاتنا العميقة.", home_portfolio_cta: "تصفح كل الأعمال",
+                    home_team_title: "تعرف على فريقنا", home_team_subtitle: "العقول المبدعة التي ستقود علامتك التجارية نحو القمة.", home_team_cta: "شاهد كل الخبراء",
+                    home_blog_title: "من مدونتنا", home_blog_subtitle: "أحدث المقالات والاستراتيجيات في عالم التسويق الرقمي.", home_blog_cta: "اقرأ المزيد من المقالات",
+                    services_title: "قوتنا في خدماتنا", services_subtitle: "نقدم حلولاً متكاملة وخدمات متخصصة لدفع نمو أعمالك في كل مراحلها.",
+                    req_title: "طلب خدمة التسويق المتكامل", req_subtitle: "خطوتك الأولى نحو النمو. املأ البيانات وسيقوم أحد خبرائنا بالتواصل معك قريباً.",
+                    req_form_basic: "البيانات الأساسية (مطلوبة)", req_form_name: "الاسم بالكامل", req_form_bizname: "اسم البيزنس", req_form_phone: "رقم الهاتف", req_form_whatsapp: "رقم الواتساب",
+                    req_form_optional: "البيانات الإضافية (اختيارية)", req_form_website: "الموقع الإلكتروني", req_form_facebook: "رابط فيسبوك", req_form_instagram: "رابط انستجرام", req_form_submit: "طلب تواصل", req_form_whatsapp_btn: "تواصل واتساب",
+                    portfolio_title: "سابقة أعمالنا", portfolio_subtitle: "شاهد كيف نترجم التحديات إلى فرص والفرص إلى نمو.",
+                    team_title: "العقول المبدعة وراء نجاحنا", team_subtitle: "تعرف على الهيكل التنظيمي لفريق الخبراء الذي سيحول أهدافك إلى واقع.",
+                    consultations_title: "احجز استشارة مع خبرائنا", consultations_subtitle: "احصل على رؤى استراتيجية مخصصة لعملك مباشرة من قادة الفكر في مجال التسويق.",
+                    blog_title: "مدونة Asgard", blog_subtitle: "أحدث الرؤى والاستراتيجيات في عالم التسويق الرقمي.",
+                    about_title: "من نحن؟", about_desc: "نحن فريق من المبدعين والمفكرين الاستراتيجيين الذين يوحدهم شغف واحد: تحقيق نتائج استثنائية.",
+                    footer_desc: "وكالة تسويق إبداعية تبني أساطير للعلامات التجارية الطموحة.", footer_links: "روابط سريعة", footer_contact: "تواصل معنا", footer_social: "تابعنا", footer_rights: "© 2025 Asgard Marketing. كل الحقوق محفوظة.",
+                    modal_success_title: "تم استلام طلبك!", modal_success_desc: "شكراً لك. سيقوم فريقنا بالتواصل معك خلال 24 ساعة.", modal_success_btn: "حسناً",
+                    cta_title: "هل أنت مستعد لبدء مشروعك؟", cta_subtitle: "دعنا نساعدك في تحقيق أهدافك. تواصل معنا اليوم للحصول على استشارة مجانية.", cta_btn: "اطلب خدمتك الآن",
+                    portfolio_filter_all: "الكل", portfolio_team_contrib: "المساهمون", portfolio_team_view_profile: "عرض الملف الشخصي",
+                    team_profile_works_by: "أعمال", team_profile_view_in_portfolio: "عرض في سابقة الأعمال", team_profile_no_works: "لا توجد أعمال منشورة حالياً.", team_profile_back: "← العودة إلى كل الفريق", team_profile_department: "قسم",
+                    portfolio_no_works: "لا توجد أعمال لعرضها في هذا القسم حالياً.",
+                    consultant_completed: "استشارة مكتملة", consultant_view_profile: "عرض الملف والخدمات",
+                    consultation_request_title: "طلب استشارة مع", consultation_packages: "باقات الاستشارة", consultation_benefit: "كيف ستفيد هذه الاستشارة عملك؟", consultation_cta: "اطلب الاستشارة",
+                    consultation_single: "جلسة واحدة", consultation_package: "باقة 4 جلسات", consultation_hour: "ساعة واحدة", consultation_4hours: "4 ساعات",
+                }
+            };
+
+            const servicesData = [
+                { id: 'comprehensive', name: { ar: 'التسويق الرقمي المتكامل', en: 'Integrated Digital Marketing' }, description: { ar: 'شراكة استراتيجية كاملة. نغوص في عمق أهداف عملك لنصمم وننفذ استراتيجية تسويق رقمي شاملة ومخصصة، تدمج كل القنوات الرقمية (SEO، إعلانات، سوشيال ميديا، محتوى) لتحقيق أقصى تأثير.', en: 'A full strategic partnership. We dive deep into your business goals to design and execute a comprehensive, customized digital marketing strategy, integrating all digital channels (SEO, Ads, Social Media, Content) for maximum impact.' } },
+                { id: 'branding', name: { ar: 'بناء العلامات التجارية', en: 'Brand Building' }, description: { ar: 'نصمم هوية بصرية وقصة فريدة لعلامتك التجارية تترك انطباعاً قوياً.', en: 'We design a unique visual identity and story for your brand that leaves a strong impression.' } },
+                { id: 'content', name: { ar: 'صناعة المحتوى الإبداعي', en: 'Creative Content Creation' }, description: { ar: 'ننتج محتوى جذاباً ومؤثراً، من المقالات والفيديوهات إلى التصاميم.', en: 'We produce engaging and impactful content, from articles and videos to graphic designs.' } },
+                { id: 'social', name: { ar: 'إدارة حسابات التواصل', en: 'Social Media Management' }, description: { ar: 'ندير وننمي وجودك على منصات التواصل الاجتماعي لبناء مجتمع متفاعل.', en: 'We manage and grow your presence on social media platforms to build an engaged community.' } },
+                { id: 'ads', name: { ar: 'الخدمات الإعلانية', en: 'Advertising Services' }, description: { ar: 'نصمم وندير حملات إعلانية مدفوعة تحقق أعلى عائد على الاستثمار.', en: 'We design and manage paid advertising campaigns that deliver the highest return on investment.' } },
+                { id: 'consulting', name: { ar: 'الاستشارات التسويقية', en: 'Marketing Consulting' }, description: { ar: 'نقدم لك رؤى الخبراء وخارطة طريق واضحة للوصول لأهدافك.', en: 'We provide you with expert insights and a clear roadmap to achieve your goals.' } }
+            ];
+
+            const teamData = [
+                { id: 'manager-1', name: { ar: 'خالد عبد الرحمن', en: 'Khalid Abdulrahman' }, title: { ar: 'المدير العام', en: 'General Manager' }, department: { ar: 'الإدارة', en: 'Management' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=K', bio: { ar: 'يقود الفريق برؤية استراتيجية وخبرة تمتد لأكثر من 15 عامًا في مجال التسويق وإدارة الأعمال.', en: 'Leads the team with a strategic vision and over 15 years of experience in marketing and business management.' }, reportsTo: null, isConsultant: true, consultationsCompleted: 150, consultationRate: { ar: '200 دولار/ساعة', en: '$200/hour' }, consultationPackageRate: { ar: '700 دولار/4 ساعات', en: '$700/4 hours' }, consultationBenefit: { ar: 'تحليل شامل لوضعك الحالي، تحديد الفرص والتحديات، ووضع خارطة طريق استراتيجية قابلة للتنفيذ لتحقيق نمو مستدام.', en: 'Comprehensive analysis of your current situation, identifying opportunities and challenges, and developing an actionable strategic roadmap for sustainable growth.' } },
+                { id: 'marketer-lead-1', name: { ar: 'علياء حسن', en: 'Alia Hassan' }, title: { ar: 'مديرة قسم التسويق', en: 'Marketing Department Manager' }, department: { ar: 'التسويق', en: 'Marketing' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=A', bio: { ar: 'متخصصة في استراتيجيات SEO والإعلانات المدفوعة، شغوفة بتحليل البيانات لتحقيق أفضل النتائج.', en: 'Specializes in SEO and paid advertising strategies, passionate about data analysis to achieve the best results.' }, reportsTo: 'manager-1', isConsultant: true, consultationsCompleted: 85, consultationRate: { ar: '150 دولار/ساعة', en: '$150/hour' }, consultationPackageRate: { ar: '500 دولار/4 ساعات', en: '$500/4 hours' }, consultationBenefit: { ar: 'مراجعة وتحسين حملاتك الإعلانية، ووضع استراتيجية SEO فعالة لزيادة ظهورك في محركات البحث وجذب عملاء جدد.', en: 'Review and optimize your advertising campaigns, and develop an an effective SEO strategy to increase your search engine visibility and attract new customers.' } },
+                { id: 'marketer-1', name: { ar: 'أحمد المصري', en: 'Ahmed Elmasry' }, title: { ar: 'أخصائي تحسين محركات البحث (SEO)', en: 'SEO Specialist' }, department: { ar: 'التسويق', en: 'Marketing' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=A', bio: { ar: 'خبير في تحسين محركات البحث وجعل علامتك التجارية في صدارة النتائج.', en: 'An expert in search engine optimization, putting your brand at the top of the results.' }, reportsTo: 'marketer-lead-1' },
+                { id: 'marketer-2', name: { ar: 'فاطمة الزهراء', en: 'Fatima Al-Zahra' }, title: { ar: 'أخصائية إعلانات مدفوعة (PPC)', en: 'PPC Specialist' }, department: { ar: 'التسويق', en: 'Marketing' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=F', bio: { ar: 'خبيرة في إدارة الحملات الإعلانية على جوجل ومنصات التواصل الاجتماعي.', en: 'Expert in managing advertising campaigns on Google and social media platforms.' }, reportsTo: 'marketer-lead-1' },
+                { id: 'marketer-3', name: { ar: 'عمر شريف', en: 'Omar Sherif' }, title: { ar: 'أخصائي سوشيال ميديا', en: 'Social Media Specialist' }, department: { ar: 'التسويق', en: 'Marketing' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=O', bio: { ar: 'يبني مجتمعات نشطة ومتفاعلة حول علامتك التجارية على الإنترنت.', en: 'Builds active and engaged communities around your brand online.' }, reportsTo: 'marketer-lead-1' },
+                { id: 'designer-lead-1', name: { ar: 'سارة إبراهيم', en: 'Sara Ibrahim' }, title: { ar: 'مديرة قسم التصميم', en: 'Design Department Manager' }, department: { ar: 'التصميم', en: 'Design' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=S', bio: { ar: 'تبتكر هويات بصرية لا تُنسى وتصاميم تحكي قصة علامتك التجارية بأسلوب فريد.', en: 'Creates memorable visual identities and designs that tell your brand’s story uniquely.' }, reportsTo: 'manager-1' },
+                { id: 'designer-1', name: { ar: 'يوسف محمود', en: 'Youssef Mahmoud' }, title: { ar: 'مصمم واجهات مستخدم (UI/UX)', en: 'UI/UX Designer' }, department: { ar: 'التصميم', en: 'Design' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=Y', bio: { ar: 'يصمم تجارب مستخدم سلسة وممتعة تضمن تفاعل العملاء مع علامتك التجارية.', en: 'Designs smooth and enjoyable user experiences that ensure customer engagement with your brand.' }, reportsTo: 'designer-lead-1' },
+                { id: 'designer-2', name: { ar: 'هنا علي', en: 'Hana Ali' }, title: { ar: 'مصممة جرافيك وموشن', en: 'Graphic & Motion Designer' }, department: { ar: 'التصميم', en: 'Design' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=H', bio: { ar: 'تحول الأفكار إلى تصاميم بصرية ثابتة ومتحركة تخطف الأنظار.', en: 'Transforms ideas into eye-catching static and motion visual designs.' }, reportsTo: 'designer-lead-1' },
+                { id: 'dev-lead-1', name: { ar: 'كريم أحمد', en: 'Karim Ahmed' }, title: { ar: 'قائد فريق التطوير', en: 'Development Team Lead' }, department: { ar: 'التطوير', en: 'Development' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=K', bio: { ar: 'يحول الأفكار الإبداعية إلى واقع تقني ملموس باستخدام أحدث التقنيات البرمجية.', en: 'Turns creative ideas into tangible technical reality using the latest software technologies.' }, reportsTo: 'manager-1' },
+                { id: 'developer-1', name: { ar: 'مريم طارق', en: 'Mariam Tarek' }, title: { ar: 'مطورة Full-Stack', en: 'Full-Stack Developer' }, department: { ar: 'التطوير', en: 'Development' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=M', bio: { ar: 'خبيرة في بناء وتطوير المواقع والتطبيقات من الألف إلى الياء بكفاءة عالية.', en: 'Expert in building and developing websites and applications from scratch with high efficiency.' }, reportsTo: 'dev-lead-1' },
+                { id: 'developer-2', name: { ar: 'بلال حمدي', en: 'Belal Hamdy' }, title: { ar: 'مطور Backend', en: 'Backend Developer' }, department: { ar: 'التطوير', en: 'Development' }, img: 'https://placehold.co/400x400/1a202c/ffffff?text=B', bio: { ar: 'يبني الأنظمة وقواعد البيانات القوية التي تشغل المواقع والتطبيقات بسلاسة.', en: 'Builds robust systems and databases that power websites and applications smoothly.' }, reportsTo: 'dev-lead-1' },
+            ];
+
+            const portfolioData = [
+                { id: 1, title: { ar: 'زيادة المبيعات لمتجر إلكتروني بنسبة 300%', en: 'Increased E-commerce Sales by 300%' }, type: { ar: 'دراسة حالة', en: 'Case Study' }, authorIds: ['marketer-lead-1', 'designer-1', 'marketer-2'], serviceId: 'ads', img: 'https://placehold.co/800x500/1a202c/fbbd24?text=Case+Study' },
+                { id: 2, title: { ar: 'تحليل سلوك المستهلك في سوق التكنولوجيا', en: 'Consumer Behavior Analysis in the Tech Market' }, type: { ar: 'بحث سوقي', en: 'Market Research' }, authorIds: ['marketer-lead-1'], serviceId: 'consulting', img: 'https://placehold.co/800x500/1a202c/60A5FA?text=Market+Research' },
+                { id: 3, title: { ar: 'بناء هوية تجارية ناجحة لشركة ناشئة', en: 'Building a Successful Brand Identity for a Startup' }, type: { ar: 'سابقة أعمال', en: 'Portfolio Work' }, authorIds: ['designer-lead-1', 'dev-lead-1', 'designer-2'], serviceId: 'branding', img: 'https://placehold.co/800x500/1a202c/FBBF24?text=Brand+Identity' },
+                { id: 4, title: { ar: 'حملة محتوى لزيادة الوعي بعلامة تجارية', en: 'Content Campaign to Increase Brand Awareness' }, type: { ar: 'سابقة أعمال', en: 'Portfolio Work' }, authorIds: ['marketer-1', 'designer-1', 'marketer-3'], serviceId: 'content', img: 'https://placehold.co/800x500/1a202c/60A5FA?text=Content+Campaign' },
+            ];
+
+            const blogData = [
+                { id: 1, title: { ar: 'كيف تستخدم الذكاء الاصطناعي في حملتك التسويقية؟', en: 'How to Use AI in Your Next Marketing Campaign?' }, date: { ar: '15 أغسطس 2025', en: 'August 15, 2025' }, img: 'https://placehold.co/600x400/1a202c/fbbd24?text=Article+1', authorId: 'marketer-lead-1' },
+                { id: 2, title: { ar: '5 أخطاء شائعة في التسويق عبر وسائل التواصل', en: '5 Common Mistakes in Social Media Marketing' }, date: { ar: '10 أغسطس 2025', en: 'August 10, 2025' }, img: 'https://placehold.co/600x400/1a202c/60A5FA?text=Article+2', authorId: 'marketer-3' },
+                { id: 3, title: { ar: 'أهمية بناء علامة تجارية قوية في 2025', en: 'The Importance of Building a Strong Brand in 2025' }, date: { ar: '5 أغسطس 2025', en: 'August 5, 2025' }, img: 'https://placehold.co/600x400/1a202c/FBBF24?text=Article+3', authorId: 'designer-lead-1' }
+            ];
+
+            // --- DOM ELEMENTS ---
+            const portfolioContainer = document.getElementById('portfolio-container');
+            const portfolioFilters = document.getElementById('portfolio-filters');
+            const servicesContainer = document.getElementById('services-container');
+            const teamDepartmentsContainer = document.getElementById('team-departments-container');
+            const teamProfileView = document.getElementById('team-profile-view');
+            const teamGridView = document.getElementById('team-grid-view');
+            const serviceRequestForm = document.getElementById('service-request-form');
+            const requestConsultationPage = document.getElementById('page-request-consultation');
+            const successModal = document.getElementById('success-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const blogContainer = document.getElementById('blog-container');
+            const consultantsContainer = document.getElementById('consultants-container');
+            const homePortfolioScroller = document.getElementById('home-portfolio-scroller');
+            const homeTeamScroller = document.getElementById('home-team-scroller');
+            const homeBlogScroller = document.getElementById('home-blog-scroller');
+            const langSwitcher = document.getElementById('lang-switcher');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileNavMenu = document.getElementById('mobile-nav-menu');
+
+
+            // --- RENDER FUNCTIONS ---
+            function renderHomePortfolio() {
+                if (!homePortfolioScroller) return;
+                // Clear existing content
+                homePortfolioScroller.innerHTML = '';
+
+                portfolioData.slice(0, 4).forEach(item => {
+                    const authors = item.authorIds.map(id => teamData.find(t => t.id === id));
+                    const imageStackClass = currentLanguage === 'ar' ? 'flex -space-x-3 space-x-reverse' : 'flex -space-x-3';
+                    const marginClass = currentLanguage === 'ar' ? 'mx-2' : 'ml-2';
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    itemDiv.innerHTML = `
+                <a href="#portfolio/${item.serviceId}" class="nav-link-btn bg-gray-700 rounded-lg overflow-hidden group w-80 flex-shrink-0 block">
+                    <img src="${item.img}" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <p class="text-xs text-amber-400 mb-1">${item.type[currentLanguage]}</p>
+                        <h4 class="font-bold text-md text-white h-12 mb-2">${item.title[currentLanguage]}</h4>
+                        <div class="flex items-center">
+                            <div class="${imageStackClass}">
+                                ${authors.map(author => `
+                                    <img class="w-8 h-8 border-2 border-gray-700 rounded-full" src="${author.img}" alt="${author.name[currentLanguage]}">
+                                `).join('')}
+                            </div>
+                            <p class="text-xs text-gray-400 ${marginClass}">${authors.length > 1 ? translations[currentLanguage].portfolio_team_contrib : authors[0].name[currentLanguage]}</p>
+                        </div>
+                    </div>
+                </a>
+                `;
+                    homePortfolioScroller.appendChild(itemDiv);
+                });
+                // Re-initialize carousel after content is added
+                initializeCarousels();
+            }
+
+            function renderHomeTeam() {
+                if (!homeTeamScroller) return;
+                // Clear existing content
+                homeTeamScroller.innerHTML = '';
+
+                teamData.filter(m => m.title.ar.includes('مدير') || m.title.ar.includes('قائد') || m.title.en.includes('Manager') || m.title.en.includes('Lead')).forEach(member => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    itemDiv.innerHTML = `
+                <a href="#team/${member.id}" class="team-member-link text-center">
+                    <img src="${member.img}" class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 border-4 border-gray-700 hover:border-amber-400 transition-colors">
+                    <h4 class="font-bold">${member.name[currentLanguage]}</h4>
+                    <p class="text-sm text-gray-400">${member.title[currentLanguage]}</p>
+                </a>
+                `;
+                    homeTeamScroller.appendChild(itemDiv);
+                });
+                // Re-initialize carousel after content is added
+                initializeCarousels();
+            }
+
+            function renderHomeBlog() {
+                if (!homeBlogScroller) return;
+                // Clear existing content
+                homeBlogScroller.innerHTML = '';
+
+                blogData.forEach(post => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'item';
+                    itemDiv.innerHTML = `
+                <a href="#blog" class="nav-link-btn bg-gray-700 rounded-lg overflow-hidden group w-80 flex-shrink-0 block">
+                    <img src="${post.img}" class="w-full h-40 object-cover">
+                    <div class="p-4">
+                        <p class="text-xs text-gray-400 mb-1">${post.date[currentLanguage]}</p>
+                        <h4 class="font-bold text-md text-white h-12">${post.title[currentLanguage]}</h4>
+                    </div>
+                </a>
+                `;
+                    homeBlogScroller.appendChild(itemDiv);
+                });
+                // Re-initialize carousel after content is added
+                initializeCarousels();
+            }
+
+            function renderServices() {
+                if (!servicesContainer) return;
+                servicesContainer.innerHTML = servicesData.map(service => `
+                <div class="bg-gray-800 rounded-lg p-8 transform hover:-translate-y-2 transition-transform wow animate__fadeInUp">
+                    <h4 class="text-2xl font-bold mb-3">${service.name[currentLanguage]}</h4>
+                    <p class="text-gray-400 mb-6 min-h-[50px]">${service.description[currentLanguage]}</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#portfolio/${service.id}" class="nav-link-btn flex-1 text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-600 transition-colors">
+                            ${translations[currentLanguage].home_portfolio_cta}
+                        </a>
+                        <a href="#request-service" class="nav-link-btn flex-1 text-center bg-amber-400 text-gray-900 font-bold py-3 px-6 rounded-full hover:bg-amber-300 transition-colors">
+                            ${translations[currentLanguage].home_hero_cta}
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+            }
+
+            function renderPortfolio(filter = 'all') {
+                if (!portfolioContainer || !portfolioFilters) return;
+
+                const filtersHtml = [{ id: 'all', name: { ar: 'الكل', en: 'All' } }, ...servicesData].map(service => {
+                    const isActive = filter === service.id ? 'active' : '';
+                    return `<button class="filter-btn ${isActive} text-white font-bold py-2 px-5 rounded-full border-2 border-gray-700 hover:border-amber-400 transition-colors" data-filter="${service.id}">${service.name[currentLanguage]}</button>`;
+                }).join('');
+                portfolioFilters.innerHTML = filtersHtml;
+
+                const filteredItems = filter === 'all' ? portfolioData : portfolioData.filter(item => item.serviceId === filter);
+                portfolioContainer.innerHTML = filteredItems.length ? filteredItems.map(item => {
+                    const authors = item.authorIds.map(id => teamData.find(t => t.id === id));
+                    // Adjust stacking of images for LTR and RTL
+                    const imageStackClass = currentLanguage === 'ar' ? 'flex -space-x-4 space-x-reverse' : 'flex -space-x-4';
+                    const marginClass = currentLanguage === 'ar' ? 'mr-4' : 'ml-4';
+                    return `
+                    <div class="bg-gray-800 rounded-lg overflow-hidden group wow animate__fadeInUp">
+                        <img src="${item.img}" class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-amber-400 mb-2">${item.type[currentLanguage]}</p>
+                            <h4 class="font-bold text-xl mb-4">${item.title[currentLanguage]}</h4>
+                            <div class="flex items-center">
+                                <div class="${imageStackClass}">
+                                    ${authors.map(author => `
+                                        <img class="w-10 h-10 border-2 border-gray-800 rounded-full" src="${author.img}" alt="${author.name[currentLanguage]}">
+                                    `).join('')}
+                                </div>
+                                <div class="${marginClass}">
+                                    <p class="font-semibold text-white text-sm">${translations[currentLanguage].portfolio_team_contrib}</p>
+                                    <p class="text-xs text-gray-400">${authors.map(a => a.name[currentLanguage]).join(', ')}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('') : `<p class="text-center text-gray-400 col-span-full">${translations[currentLanguage].portfolio_no_works}</p>`;
+
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const newFilter = btn.dataset.filter;
+                        history.pushState(null, '', `#portfolio/${newFilter}`);
+                        renderPortfolio(newFilter);
+                    });
+                });
+            }
+
+            function renderBlogPosts(posts) {
+                if (!blogContainer) return;
+                blogContainer.innerHTML = posts.map(post => `
+                <div class="bg-gray-800 rounded-lg overflow-hidden group wow animate__fadeInUp">
+                    <img src="${post.img}" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <p class="text-sm text-gray-400 mb-2">${post.date[currentLanguage]}</p>
+                        <h4 class="font-bold text-lg mb-3">${post.title[currentLanguage]}</h4>
+                        <a href="#" class="text-amber-400 font-semibold">${translations[currentLanguage].home_blog_cta} &rarr;</a>
+                    </div>
+                </div>
+            `).join('');
+            }
+
+            function renderTeamGrid() {
+                if (!teamDepartmentsContainer) return;
+                const departments = [...new Set(teamData.map(item => item.department[currentLanguage]))];
+                teamDepartmentsContainer.innerHTML = departments.map(dept => {
+                    const members = teamData.filter(m => m.department[currentLanguage] === dept);
+                    const manager = members.find(m => m.reportsTo === null);
+                    const leads = members.filter(m => m.reportsTo && m.reportsTo.includes('manager-1'));
+                    const specialists = members.filter(m => m.reportsTo && !m.reportsTo.includes('manager-1'));
+
+                    let departmentHtml = `<div class="text-center wow animate__fadeInUp"><h2 class="text-3xl font-bold mb-10 text-white border-b-2 border-amber-400 pb-3 inline-block">${dept}</h2></div>`;
+
+                    if (manager) {
+                        departmentHtml += `
+                         <div class="flex justify-center mb-10 wow animate__fadeInUp" data-wow-delay="0.2s">
+                            <a href="#team/${manager.id}" class="team-member-link bg-gray-800 p-6 rounded-lg text-center block hover:bg-gray-700 transition-colors w-full max-w-sm">
+                                <img src="${manager.img}" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700">
+                                <h4 class="text-xl font-bold">${manager.name[currentLanguage]}</h4>
+                                <p class="text-amber-400">${manager.title[currentLanguage]}</p>
+                            </a>
+                        </div>
+                    `;
+                    }
+
+                    if (leads.length > 0) {
+                        departmentHtml += `<div class="flex justify-center flex-wrap gap-8 mb-10 wow animate__fadeInUp" data-wow-delay="0.4s">
+                         ${leads.map(lead => `
+                             <a href="#team/${lead.id}" class="team-member-link bg-gray-800 p-6 rounded-lg text-center block hover:bg-gray-700 transition-colors w-full max-w-sm">
+                                <img src="${lead.img}" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-700">
+                                <h4 class="text-xl font-bold">${lead.name[currentLanguage]}</h4>
+                                <p class="text-amber-400">${lead.title[currentLanguage]}</p>
+                            </a>
+                        `).join('')}
+                    </div>`;
+                    }
+
+                    if (specialists.length > 0) {
+                        departmentHtml += `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center wow animate__fadeInUp" data-wow-delay="0.6s">
+                        ${specialists.map(member => `
+                            <a href="#team/${member.id}" class="team-member-link bg-gray-700 p-6 rounded-lg text-center block hover:bg-gray-600 transition-colors">
+                                <img src="${member.img}" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-600">
+                                <h4 class="text-lg font-bold">${member.name[currentLanguage]}</h4>
+                                <p class="text-gray-400 text-sm">${member.title[currentLanguage]}</p>
+                            </a>
+                        `).join('')}
+                    </div>`;
+                    }
+
+                    return `<div>${departmentHtml}</div>`;
+                }).join('');
+            }
+
+            function renderTeamProfile(memberId) {
+                const member = teamData.find(m => m.id === memberId);
+                if (!member || !teamProfileView) return;
+                const memberPortfolio = portfolioData.filter(i => i.authorIds.includes(memberId));
+                let profileHtml = `
+                <section class="py-20 bg-gray-800 wow animate__fadeInUp">
+                    <div class="container mx-auto px-6 text-center">
+                        <img src="${member.img}" class="w-48 h-48 rounded-full mx-auto mb-6 border-8 border-gray-700">
+                        <h3 class="text-4xl font-bold">${member.name[currentLanguage]}</h3>
+                        <p class="text-2xl text-amber-400 mb-4">${member.title[currentLanguage]}</p>
+                        <p class="text-lg text-gray-400 mb-4">${translations[currentLanguage].team_profile_department} ${member.department[currentLanguage]}</p>
+                        <p class="max-w-2xl mx-auto text-gray-300 mb-10">${member.bio[currentLanguage]}</p>
+                        <a href="#team" class="nav-link-btn text-amber-400 border border-amber-400 font-bold py-2 px-6 rounded-full hover:bg-amber-400 hover:text-gray-900 transition-colors">${translations[currentLanguage].team_profile_back}</a>
+                    </div>
+                </section>`;
+
+                if (member.isConsultant) {
+                    profileHtml += `
+                <section class="py-20 wow animate__fadeInUp">
+                    <div class="container mx-auto px-6">
+                        <h4 class="text-3xl font-bold text-center mb-10 section-title">${translations[currentLanguage].consultation_request_title} ${member.name[currentLanguage]}</h4>
+                        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                             <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                                 <h5 class="text-xl font-bold text-amber-400">${translations[currentLanguage].consultation_single}</h5>
+                                 <p class="text-3xl font-bold my-4">${member.consultationRate[currentLanguage]}</p>
+                                 <p class="text-gray-400">${translations[currentLanguage].consultation_hour}</p>
+                             </div>
+                             <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                                 <h5 class="text-xl font-bold text-amber-400">${translations[currentLanguage].consultation_package}</h5>
+                                 <p class="text-3xl font-bold my-4">${member.consultationPackageRate[currentLanguage]}</p>
+                                 <p class="text-gray-400">${translations[currentLanguage].consultation_4hours}</p>
+                             </div>
+                        </div>
+                        <div class="max-w-4xl mx-auto text-center">
+                            <h5 class="text-xl font-bold mb-4">${translations[currentLanguage].consultation_benefit}</h5>
+                            <p class="text-gray-300 mb-8">${member.consultationBenefit[currentLanguage]}</p>
+                            <a href="#request-consultation/${member.id}" class="nav-link-btn bg-amber-400 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-300">${translations[currentLanguage].consultation_cta}</a>
+                        </div>
+                    </div>
+                </section>
+                `;
+                }
+
+                profileHtml += `
+                <section class="py-20 bg-gray-800 wow animate__fadeInUp">
+                    <div class="container mx-auto px-6">
+                        <h4 class="text-3xl font-bold text-center mb-10 section-title">${translations[currentLanguage].team_profile_works_by} ${member.name[currentLanguage]}</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            ${memberPortfolio.length > 0 ? memberPortfolio.map(item => `
+                                <div class="bg-gray-700 rounded-lg overflow-hidden group">
+                                    <img src="${item.img}" class="w-full h-56 object-cover">
+                                    <div class="p-6">
+                                        <p class="text-sm text-amber-400 mb-2">${item.type[currentLanguage]}</p>
+                                        <h4 class="font-bold text-xl mb-4">${item.title[currentLanguage]}</h4>
+                                        <a href="#portfolio/${item.serviceId}" class="nav-link-btn text-gray-400 font-semibold text-sm">${translations[currentLanguage].team_profile_view_in_portfolio} &rarr;</a>
+                                    </div>
+                                </div>`).join('') : `<p class="text-center text-gray-400 col-span-2">${translations[currentLanguage].team_profile_no_works}</p>`}
+                        </div>
+                    </div>
+                </section>`;
+                teamProfileView.innerHTML = profileHtml;
+            }
+
+            function renderConsultationsPage() {
+                if (!consultantsContainer) return;
+                const consultants = teamData.filter(m => m.isConsultant);
+                consultantsContainer.innerHTML = consultants.map(consultant => `
+                <div class="bg-gray-800 rounded-lg p-6 text-center transform hover:-translate-y-2 transition-transform flex flex-col items-center wow animate__fadeInUp">
+                    <img src="${consultant.img}" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-gray-700">
+                    <h4 class="text-xl font-bold">${consultant.name[currentLanguage]}</h4>
+                    <p class="text-amber-400 mb-2">${consultant.title[currentLanguage]}</p>
+                    <p class="text-gray-400 text-sm flex-grow">${consultant.bio[currentLanguage].substring(0, 100)}...</p>
+                    <div class="my-4">
+                        <span class="font-bold text-lg">${consultant.consultationsCompleted}</span>
+                        <p class="text-xs text-gray-400">${translations[currentLanguage].consultant_completed}</p>
+                    </div>
+                    <a href="#team/${consultant.id}" class="nav-link-btn mt-auto bg-gray-700 text-white font-bold py-2 px-4 rounded-full hover:bg-gray-600 transition-colors">${translations[currentLanguage].consultant_view_profile}</a>
+                </div>
+            `).join('');
+            }
+
+            function renderConsultationRequestForm(consultantId) {
+                if (!requestConsultationPage) return;
+                const consultant = teamData.find(c => c.id === consultantId);
+                if (!consultant) {
+                    requestConsultationPage.innerHTML = `<p class="text-center py-20">Consultant not found.</p>`;
+                    return;
+                }
+                // Re-use the service request form but with a custom title
+                const formHtml = document.getElementById('page-request-service').innerHTML;
+                requestConsultationPage.innerHTML = formHtml;
+                requestConsultationPage.querySelector('h3').innerText = `${translations[currentLanguage].consultation_request_title} ${consultant.name[currentLanguage]}`;
+            }
+
+            // --- Owl Carousel Initialization ---
+            function initializeCarousels() {
+                // Destroy existing carousels to prevent re-initialization issues
+                $('.owl-carousel').owlCarousel('destroy');
+
+                $('#home-portfolio-scroller').owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    nav: false,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 1000,
+                    autoplaySpeed: 1000,
+                    autoplayHoverPause: true,
+                    rtl: currentLanguage === 'ar',
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        1024: {
+                            items: 3
+                        }
+                    }
+                });
+
+                $('#home-team-scroller').owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    nav: false,
+                    dots: true,
+                    center: true,
+                    autoplay: true,
+                    autoplayTimeout: 1000,
+                    autoplaySpeed: 1000,
+                    autoplayHoverPause: true,
+                    rtl: currentLanguage === 'ar',
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        1024: {
+                            items: 3
+                        }
+                    }
+                });
+
+                $('#home-blog-scroller').owlCarousel({
+                    loop: true,
+                    margin: 20,
+                    nav: false,
+                    dots: false,
+                    autoplay: true,
+                    autoplayTimeout: 1000,
+                    autoplaySpeed: 1000,
+                    autoplayHoverPause: true,
+                    rtl: currentLanguage === 'ar',
+                    responsive: {
+                        0: {
+                            items: 1
+                        },
+                        768: {
+                            items: 2
+                        },
+                        1024: {
+                            items: 3
+                        }
+                    }
+                });
+            }
+
+
+            // --- NAVIGATION LOGIC ---
+            function showPage(hash) {
+                document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('#nav-links .nav-link').forEach(l => l.classList.remove('active'));
+
+                const [pageId, param] = hash.substring(1).split('/');
+                const targetPageId = pageId || 'home';
+
+                const targetPage = document.getElementById(`page-${targetPageId}`);
+                if (targetPage) targetPage.classList.add('active');
+
+                const activeLink = document.querySelector(`#nav-links a[href="#${targetPageId}"]`);
+                if (activeLink) activeLink.classList.add('active');
+
+                if (targetPageId === 'team' && param) {
+                    teamGridView.classList.add('hidden');
+                    teamProfileView.classList.remove('hidden');
+                    renderTeamProfile(param);
+                } else if (targetPageId === 'team') {
+                    teamProfileView.classList.add('hidden');
+                    teamGridView.classList.remove('hidden');
+                }
+
+                if (targetPageId === 'portfolio') {
+                    renderPortfolio(param || 'all');
+                }
+
+                if (targetPageId === 'request-consultation' && param) {
+                    renderConsultationRequestForm(param);
+                }
+
+                window.scrollTo(0, 0);
+            }
+
+            function handleNav(event) {
+                event.preventDefault();
+                const hash = event.currentTarget.getAttribute('href');
+                history.pushState(null, '', hash);
+                showPage(hash);
+                mobileNavMenu.classList.remove('open'); // Close mobile menu on nav click
+            }
+
+            function attachNavHandlers() {
+                document.querySelectorAll('.nav-link, .nav-link-btn, .team-member-link').forEach(link => {
+                    link.removeEventListener('click', handleNav);
+                    link.addEventListener('click', handleNav);
+                });
+            }
+
+            // --- FORM & MODAL LOGIC ---
+            if (serviceRequestForm) {
+                serviceRequestForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    if (document.getElementById('name').value && document.getElementById('phone').value) {
+                        successModal.classList.remove('hidden');
+                        setTimeout(() => successModal.querySelector('div').classList.remove('scale-95'), 10);
+                        serviceRequestForm.reset();
+                    }
+                });
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function () {
+                    successModal.classList.add('hidden');
+                    successModal.querySelector('div').classList.add('scale-95');
+                    history.pushState(null, '', '#home');
+                    showPage('#home');
+                });
+            }
+
+            // Reusable CTA Section
+            const ctaHTML = `
+            <section class="py-20 bg-gray-800 wow animate__fadeInUp">
+                <div class="container mx-auto px-6 text-center">
+                    <h3 data-translate-key="cta_title" class="text-3xl md:text-4xl font-bold mb-4 text-white">Ready to Start Your Project?</h3>
+                    <p data-translate-key="cta_subtitle" class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">Let us help you achieve your goals. Contact us today for a free consultation.</p>
+                    <a href="#request-service" data-translate-key="cta_btn" class="nav-link-btn bg-amber-400 text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-amber-300 transition-transform transform hover:scale-105">Request Your Service Now</a>
+                </div>
+            </section>
+        `;
+            document.querySelectorAll('.cta-section').forEach(el => el.innerHTML = ctaHTML);
+
+            // --- INITIALIZATION ---
+            function setLanguage(lang) {
+                currentLanguage = lang;
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+                // Special handling for the body's font family
+                document.body.style.fontFamily = lang === 'ar' ? "'Cairo', sans-serif" : "'Inter', 'Cairo', sans-serif";
+
+                document.querySelectorAll('[data-translate-key]').forEach(el => {
+                    const key = el.dataset.translateKey;
+                    if (translations[lang][key]) {
+                        el.innerText = translations[lang][key];
+                    }
+                });
+
+                // Update language switcher button text and mobile switcher
+                langSwitcher.querySelector('span').innerText = lang === 'ar' ? translations.ar.lang_en : translations.en.lang_ar;
+                document.getElementById('lang-switcher-mobile').querySelector('span').innerText = lang === 'ar' ? translations.ar.lang_en : translations.en.lang_ar;
+
+                // Adjust the CTA button for Arabic
+                const ctaBtn = document.querySelector('[data-translate-key="cta_btn"]');
+                if (lang === 'ar') {
+                    ctaBtn.innerText = translations.ar.cta_btn;
+                } else {
+                    ctaBtn.innerText = translations.en.cta_btn;
+                }
+
+                // Rerender dynamic content after language change
+                renderAllDynamicContent();
+                attachNavHandlers();
+            }
+
+            function renderAllDynamicContent() {
+                const currentHash = window.location.hash || '#home';
+                const [pageId, param] = currentHash.substring(1).split('/');
+
+                renderHomePortfolio();
+                renderHomeTeam();
+                renderHomeBlog();
+                renderServices();
+                renderPortfolio(param || 'all');
+                renderBlogPosts(blogData);
+                renderTeamGrid();
+                renderConsultationsPage();
+
+                if (pageId === 'team' && param) {
+                    renderTeamProfile(param);
+                }
+                if (pageId === 'request-consultation' && param) {
+                    renderConsultationRequestForm(param);
+                }
+            }
+
+            // Event listeners for language switchers
+            langSwitcher.addEventListener('click', () => {
+                const newLang = currentLanguage === 'ar' ? 'en' : 'ar';
+                setLanguage(newLang);
+            });
+
+            document.getElementById('lang-switcher-mobile').addEventListener('click', () => {
+                const newLang = currentLanguage === 'ar' ? 'en' : 'ar';
+                setLanguage(newLang);
+            });
+
+
+            // Event listeners for mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileNavMenu.classList.toggle('open');
+            });
+
+            window.addEventListener('popstate', () => showPage(window.location.hash));
+
+            // Initial setup
+            setLanguage('en');
+            showPage(window.location.hash || '#home');
+
+            // Initialize WOW.js
+            new WOW().init();
+        });
+    </script>
+</body>
+
+</html>
